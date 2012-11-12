@@ -15,7 +15,7 @@
   global.grhdetimer = 0;
   var entries_container = document.querySelector('#entries');
   entries_container.addEventListener('DOMNodeInserted', function (e) {
-    if (grefdtimer) return; // timer残ってたらやめる
+    if (global.grhdetimer) return; // timer残ってたらやめる
     global.grhdetimer = setTimeout(function () { // DOMNodeInsertedで無駄に挿入時に実行されるから、timer使って適当にごまかす
       var entries = Array.prototype.slice.call(document.querySelectorAll('.entry'));
       // URLの取得を1回で済ますためにキャッシュするのが目的
@@ -41,6 +41,6 @@
         }
       });
       global.grhdetimer = 0;
-    }, 100);
+    }, 500);
   }, false);
 }(this));
